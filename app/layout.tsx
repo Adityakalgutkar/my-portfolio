@@ -2,7 +2,7 @@ import "./css/style.css";
 
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-
+import Script from "next/script";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -24,6 +24,18 @@ export default function RootLayout({
       <body
         className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-15803G0RQN"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-15803G0RQN');
+          `}
+        </Script>
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {children}
         </div>
