@@ -1,6 +1,7 @@
 import "./css/style.css";
 
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,20 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {children}
         </div>
+        <Toaster
+    position="top-right"
+    reverseOrder={false}
+    gutter={12}
+    toastOptions={{
+      duration: 4000,
+      style: {
+        background: "#111827",
+        color: "#fff",
+        borderRadius: "12px",
+        padding: "16px",
+      },
+    }}
+  />
       </body>
     </html>
   );

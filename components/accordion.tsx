@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-type AccordionpProps = {
+type AccordionProps = {
   children: React.ReactNode;
   title: string;
   id: string;
@@ -14,46 +14,49 @@ export default function Accordion({
   title,
   id,
   active = false,
-}: AccordionpProps) {
-  const [accordionOpen, setAccordionOpen] = useState<boolean>(active);
+}: AccordionProps) {
+  const [accordionOpen, setAccordionOpen] = useState(active);
 
   return (
-    <div className="relative rounded-lg bg-white/70 shadow-sm shadow-black/[0.03] before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(var(--color-gray-100),var(--color-gray-200))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
+    <div className="rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md">
       <h2>
         <button
-          className="flex w-full items-center justify-between px-4 py-3 text-left font-semibold"
-          onClick={(e) => {
-            e.preventDefault();
-            setAccordionOpen((prevState) => !prevState);
-          }}
+          id={`accordion-title-${id}`}
+          type="button"
+          className="flex w-full items-center justify-between px-5 py-4 text-left font-semibold text-gray-900 transition-colors duration-200 hover:text-blue-600"
+          onClick={() => setAccordionOpen((prev) => !prev)}
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}
         >
           <span>{title}</span>
-          <span className="ml-8 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-xs">
+
+          <span className="ml-6 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100">
             <svg
-              className={`origin-center transform fill-gray-400 transition duration-200 ease-out ${accordionOpen && "rotate-180!"}`}
+              className={`h-3 w-3 fill-gray-500 transition-transform duration-300 ${
+                accordionOpen ? "rotate-180" : ""
+              }`}
               xmlns="http://www.w3.org/2000/svg"
-              width={10}
-              height={6}
-              fill="none"
+              viewBox="0 0 10 6"
+              aria-hidden="true"
             >
-              <path
-                d="m2 .586 3 3 3-3L9.414 2 5.707 5.707a1 1 0 0 1-1.414 0L.586 2 2 .586Z"
-                clipRule="evenodd"
-              />
+              <path d="M2 .586 5 3.586 8 .586 9.414 2 5.707 5.707a1 1 0 0 1-1.414 0L.586 2 2 .586Z" />
             </svg>
           </span>
         </button>
       </h2>
+
       <div
         id={`accordion-text-${id}`}
         role="region"
         aria-labelledby={`accordion-title-${id}`}
-        className={`grid overflow-hidden text-sm text-gray-600 transition-all duration-300 ease-in-out ${accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+        className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
+          accordionOpen
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
       >
         <div className="overflow-hidden">
-          <p className="px-4 pb-3">{children}</p>
+          <p className="px-5 pb-5 leading-7 text-gray-600">{children}</p>
         </div>
       </div>
     </div>
