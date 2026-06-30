@@ -4,19 +4,23 @@ export const metadata = {
 };
 
 import Hero from "@/components/hero-home";
-import BusinessCategories from "@/components/business-categories";
-import FeaturesPlanet from "@/components/features-planet";
-import LargeTestimonial from "@/components/large-testimonial";
-import Cta from "@/components/cta";
+import About from "@/components/about";
+import Services from "@/components/services";
+import FeaturedProjects from "@/components/featured-projects";
+import WhyWorkWithMe from "@/components/why-work-with-me";
+import Faq from "@/components/faq";
+import Contact from "@/components/contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <BusinessCategories />
-      <FeaturesPlanet />
-      <LargeTestimonial />
-      <Cta />
+      <About />
+      <Services />
+      <FeaturedProjects />
+      <WhyWorkWithMe />
+      <Faq />
+      <Contact />
     </>
   );
 }
