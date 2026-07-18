@@ -1,0 +1,202 @@
+@import 'tailwindcss';
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim: rgba(201, 168, 76, 0.3);
+  --chess-bg: #080808;
+  --surface: #111111;
+  --surface-2: #1A1A1A;
+  --chess-text: #F5F5F0;
+  --text-muted: #666660;
+  --chess-border: rgba(255, 255, 255, 0.07);
+  --square-light: #D4C5A9;
+  --square-dark: #5C4033;
+}
+
+.chess-page {
+  background: var(--chess-bg);
+  color: var(--chess-text);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.chess-page ::-webkit-scrollbar {
+  width: 3px;
+}
+.chess-page ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chess-page ::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 2px;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.chess-page .font-display {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+}
+.chess-page .font-mono {
+  font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+}
+
+.chess-page .glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chess-page .text-gold-gradient {
+  background: linear-gradient(135deg, #C9A84C 0%, #E8C97A 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chess-page .glow-gold {
+  box-shadow:
+    0 0 40px rgba(201, 168, 76, 0.15),
+    0 0 80px rgba(201, 168, 76, 0.06);
+}
+
+.chess-page #cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    opacity 0.2s;
+  mix-blend-mode: difference;
+}
+
+.chess-page #cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.12s ease,
+    width 0.3s,
+    height 0.3s,
+    border-color 0.3s;
+}
+
+.chess-page .chess-piece {
+  transition:
+    filter 0.25s,
+    transform 0.25s;
+  cursor: none;
+}
+.chess-page .chess-piece:hover {
+  filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.8));
+  transform: translateY(-3px) scale(1.08);
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(30px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes chess-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.chess-page .shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #C9A84C 0%,
+    #F5E6B0 40%,
+    #C9A84C 60%,
+    #E8C97A 100%
+  );
+  background-size: 800px auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .chess-page .hide-mobile {
+    display: none !important;
+  }
+  .chess-page .mobile-pad {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .chess-page .chess-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .chess-page .chess-two-col {
+    grid-template-columns: 1fr !important;
+  }
+  .chess-page .chess-projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .chess-page .chess-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .chess-page .chess-trust-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .chess-page .chess-services-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .chess-page .chess-services-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
