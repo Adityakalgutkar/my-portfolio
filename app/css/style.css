@@ -8,9 +8,47 @@
   strategy: base;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: #0C0C0C;
+  --foreground: #F0EFEA;
+  --card: #141414;
+  --card-foreground: #F0EFEA;
+  --primary: #C8FF57;
+  --primary-foreground: #0C0C0C;
+  --secondary: #1A1A1A;
+  --secondary-foreground: #F0EFEA;
+  --muted: #1E1E1E;
+  --muted-foreground: #737373;
+  --accent: #C8FF57;
+  --accent-foreground: #0C0C0C;
+  --border: #222222;
+  --ring: #C8FF57;
+  --radius: 6px;
+}
+
 @theme {
-  --font-inter: Inter, sans-serif;
-  --font-mono: Roboto Mono, monospace;
+  --font-sans: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
 
   --text-xs: 0.75rem;
   --text-xs--line-height: 1.5;
@@ -202,6 +240,40 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    box-sizing: border-box;
+    border-color: var(--border, currentColor);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Accordion animation */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
 }

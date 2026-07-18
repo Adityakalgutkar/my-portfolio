@@ -1,70 +1,25 @@
-import ServiceIcon from "@/components/ui/service-icon";
+import SectionLabel from "@/components/ui/section-label";
+import ServiceCard from "@/components/ui/service-card";
+import { SERVICES } from "@/lib/data";
 
-const serviceItems = [
-  {
-    title: "WordPress Development",
-    description:
-      "Custom business websites, WooCommerce stores, plugin customization, theme development, website maintenance, and performance optimization.",
-  },
-  {
-    title: "Shopify Development",
-    description:
-      "Theme customization, store setup, app integration, bug fixes, conversion improvements, and ongoing store maintenance.",
-  },
-  {
-    title: "Custom Web Development",
-    description:
-      "Modern web applications built using React, Next.js, Angular, JavaScript, and TypeScript.",
-  },
-  {
-    title: "Landing Pages",
-    description:
-      "High-converting landing pages designed for speed, responsiveness, and excellent user experience.",
-  },
-  {
-    title: "Website Optimization",
-    description:
-      "Improve loading speed, Core Web Vitals, SEO fundamentals, accessibility, and overall website performance.",
-  },
-  {
-    title: "Maintenance & Support",
-    description:
-      "Regular updates, bug fixing, feature enhancements, backups, and long-term technical support.",
-  },
-];
-
-const cardClassName =
-  "relative rounded-lg border border-gray-200 bg-white/70 p-6 shadow-sm shadow-black/[0.03]";
 export default function Services() {
   return (
-    <section id="services" className="relative">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="py-12 md:py-20">
-          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
-            <h2
-              className="mb-4 border-y text-3xl font-bold [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-300/.8),transparent)1] md:text-4xl"
-              data-aos="zoom-y-out"
-            >
-              Services
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceItems.map((service, index) => (
-              <article
-                key={service.title}
-                className={cardClassName}
-                data-aos="zoom-y-out"
-                data-aos-delay={index * 75}
-              >
-                <ServiceIcon name={service.title} />
-                <h3 className="mb-3 text-lg font-bold text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-700">{service.description}</p>
-              </article>
-            ))}
-          </div>
+    <section id="services" className="border-t border-secondary">
+      <div className="mx-auto max-w-[1200px] px-6 py-[100px]">
+        <SectionLabel text="SERVICES" />
+        <div className="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+          <h2 className="max-w-[480px] text-[clamp(32px,4vw,48px)] font-extrabold leading-[1.1] tracking-[-0.025em] text-foreground">
+            What I can build for you
+          </h2>
+          <p className="max-w-[300px] text-right text-sm leading-[1.7] text-[#555] lg:text-right">
+            End-to-end development across the most impactful platforms and
+            frameworks.
+          </p>
+        </div>
+        <div className="grid overflow-hidden rounded-lg border border-secondary sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((s) => (
+            <ServiceCard key={s.num} {...s} />
+          ))}
         </div>
       </div>
     </section>
