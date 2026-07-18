@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Home - Simple",
-  description: "Page description",
+  title: "Aditya Kalgutkar — Web Developer",
+  description:
+    "Freelance web developer specializing in WordPress, Shopify, React, and Next.js.",
 };
 
 import Hero from "@/components/hero-home";

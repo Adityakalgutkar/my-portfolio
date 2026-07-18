@@ -1,13 +1,7 @@
-import Image from "next/image";
-
 export default function Logo() {
   return (
-    <Image
-      src="/images/logo.png"
-      alt="Aditya Kalgutkar Logo"
-      width={48}
-      height={48}
-      priority
-    />
+    <span className="font-mono text-[15px] font-bold tracking-tight text-primary">
+      AK<span className="text-foreground">.dev</span>
+    </span>
   );
 }
